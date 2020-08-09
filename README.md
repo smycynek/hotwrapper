@@ -1,4 +1,5 @@
 # Hotwrapper
 
+## CORS-enabled proxy for HotBits ( https://www.fourmilab.ch/hotbits/ )
 
-# CORS-enabled proxy for HotBits
+## Used by https://stevenvictor.net/reactive
