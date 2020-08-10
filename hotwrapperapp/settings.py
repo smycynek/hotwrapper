@@ -14,6 +14,9 @@ import os
 import django_heroku
 
 
+from dotenv import load_dotenv
+load_dotenv()
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -22,7 +25,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "CHANGE_ME!!!! (P.S. the SECRET_KEY environment variable will be used, if set, instead)."
+SECRET_KEY = os.getenv("SECRET_KEY","8d3de28d-ed1d-4bfc-8f86-cf4d16dd06b9")
+
+DEFAULT_HOTBITS = "https://www.fourmilab.ch/cgi-bin/Hotbits.api?nbytes=9&fmt=json&npass=1&lpass=8&pwtype=3&apikey=&pseudo=pseudo"
+
+HOTBITS_ENDPOINT = SECRET_KEY = os.getenv("HOTBITS_ENDPOINT", DEFAULT_HOTBITS)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -82,7 +89,7 @@ WSGI_APPLICATION = "hotwrapperapp.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE" : "django.db.backends.sqlite3",
+        "ENGINE": "django.db.backends.sqlite3",
         "NAME": os.path.join(BASE_DIR, "db.sqlite3")
     }
 }
